@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="exitUntilCollapsed|scroll|snap">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/vpParent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_220dp"
+                    android:layout_marginTop="@dimen/dim_20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabsIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="?actionBarSize"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewPager"
+                    app:tabBackground="@drawable/tab_selector"
+                    app:tabIndicatorHeight="@dimen/dim_0dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_gravity="bottom"
+                app:layout_collapseMode="pin">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/dim_20dp"
+                    android:paddingTop="@dimen/dim_10dp"
+                    android:paddingBottom="@dimen/dim_10dp">
+
+                    <androidx.appcompat.widget.SearchView
+                        android:id="@+id/searchView"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:background="@drawable/rounded_corner_rectangle"
+                        android:theme="@style/ThemeOverlay.SearchView"
+                        app:iconifiedByDefault="false"
+                        app:queryHint="Search" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/dim_5dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvDataList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="true"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvNoData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim_40dp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dim_20sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
